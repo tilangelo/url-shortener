@@ -31,13 +31,13 @@ public class ShortUrl {
 
     // Factory method для создания новой short URL
     public static ShortUrl create(Long id, ShortCode shortCode,
-                                  LongUrl longUrl, Instant expiresAt) {
+                                  LongUrl longUrl) {
         return new ShortUrl(
                 id,
                 shortCode, // Генерируем short code из ID
                 longUrl,
                 Instant.now(),
-                expiresAt
+                Instant.now().plusSeconds(1800)
         );
     }
 

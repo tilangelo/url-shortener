@@ -1,6 +1,10 @@
 package com.example.shortener.api.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class ShortenResponse {
-    String ShortUrl;
-    String LongUrl;
+    private String shortUrl;
 }
