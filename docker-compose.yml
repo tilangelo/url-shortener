@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: shortener
       POSTGRES_PASSWORD: shortener
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:

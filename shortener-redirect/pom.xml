@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>shortener_multi_modules</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>shortener-redirect</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>shortener-redirect</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- ВАЖНО: используем бизнес-логику core -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>shortener-core</artifactId>
+            <version>${project.version}</version>
+            <exclusions>
+                <!-- ВАЖНО: вырезаем JPA -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-jpa</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Reactive HTTP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
