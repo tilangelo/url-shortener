@@ -14,6 +14,8 @@ public interface JpaUrlRepository extends JpaRepository<UrlEntity, Long> {
 
     boolean existsByShortCode(String shortCode);
 
+    UrlEntity findByLongUrl(String longUrl);
+
     @Modifying
     @Query("UPDATE UrlEntity u SET u.clickCount = u.clickCount + 1 WHERE u.shortCode = :shortCode")
     void incrementClickCount(String shortCode);

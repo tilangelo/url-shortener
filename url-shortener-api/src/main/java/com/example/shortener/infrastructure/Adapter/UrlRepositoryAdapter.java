@@ -54,4 +54,9 @@ public class UrlRepositoryAdapter implements UrlRepositoryPort {
     public void incrementClickCount(String shortCode) {
         jpaUrlRepository.incrementClickCount(shortCode);
     }
+
+    @Override
+    public UrlEntity findByLongUrl(String longUrl) {
+        return jpaUrlRepository.findByLongUrl(longUrl);
+    }
 }

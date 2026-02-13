@@ -1,28 +1,34 @@
 package com.example.shortener.infrastructure.persistence.mapper;
 
 import com.example.shortener.domain.model.ShortUrl;
+import com.example.shortener.domain.valueobject.LongUrl;
+import com.example.shortener.domain.valueobject.ShortCode;
 import com.example.shortener.infrastructure.persistence.entity.UrlEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UrlMapper {
     public UrlEntity toEntity(ShortUrl shortUrl) {
-        return new UrlEntity(
+        UrlEntity entity = new UrlEntity(
                 shortUrl.getId(),
                 shortUrl.getShortCode(),
                 shortUrl.getLongUrl(),
                 shortUrl.getCreatedAt(),
                 shortUrl.getExpiresAt()
         );
+        entity.setClickCount(shortUrl.getClickCount());
+        return entity;
     }
 
     public ShortUrl toDomain(UrlEntity entity) {
-        return new ShortUrl(
+        ShortUrl url = new ShortUrl(
                 entity.getId(),
-                com.example.shortener.domain.valueobject.ShortCode.of(entity.getShortCode()),
-                com.example.shortener.domain.valueobject.LongUrl.of(entity.getLongUrl()),
+                ShortCode.of(entity.getShortCode()),
+                LongUrl.of(entity.getLongUrl()),
                 entity.getCreatedAt(),
                 entity.getExpiresAt()
         );
+        url.setClickCount(entity.getClickCount()); // нужен setter или factory
+        return url;
     }
 }

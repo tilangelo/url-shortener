@@ -1,6 +1,7 @@
 package com.example.shortener.application.port.out;
 
 import com.example.shortener.domain.model.ShortUrl;
+import com.example.shortener.infrastructure.persistence.entity.UrlEntity;
 
 import java.util.Optional;
 
@@ -12,4 +13,6 @@ public interface UrlRepositoryPort {
     boolean existsByShortCode(String shortCode);
 
     void incrementClickCount(String shortCode);
+
+    UrlEntity findByLongUrl(String longUrl);
 }

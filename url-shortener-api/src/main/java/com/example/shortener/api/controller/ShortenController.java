@@ -26,9 +26,9 @@ public class ShortenController {
     public ResponseEntity<ShortenResponse> shorten(@Valid @RequestBody ShortenRequest request) {
         ShortUrl shortUrl = createShortUrlUseCase.createShortUrl(request.getLongUrl());
 
-        ShortenResponse response = new ShortenResponse(shortUrl.getShortCode());
+        String fullUrl = baseUrl + "/" + shortUrl.getShortCode();
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new ShortenResponse(fullUrl));
     }
 
 }

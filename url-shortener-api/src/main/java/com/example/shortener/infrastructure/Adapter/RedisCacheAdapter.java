@@ -4,6 +4,7 @@ import com.example.shortener.application.port.out.CachePort;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.util.Optional;
 
 @Component
@@ -20,7 +21,7 @@ public class RedisCacheAdapter implements CachePort {
         redisTemplate.opsForValue().set(
                 buildKey(shortCode),
                 longUrl,
-                1800);
+                Duration.ofMinutes(30));
     }
 
     @Override

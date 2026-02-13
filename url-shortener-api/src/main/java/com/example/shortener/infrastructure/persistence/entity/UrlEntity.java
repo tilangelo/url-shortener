@@ -16,7 +16,7 @@ import java.time.Instant;
 public class UrlEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "short_code", nullable = false, unique = true, length = 10)

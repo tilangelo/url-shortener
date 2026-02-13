@@ -3,6 +3,7 @@ package com.example.shortener.domain.model;
 import com.example.shortener.domain.valueobject.LongUrl;
 import com.example.shortener.domain.valueobject.ShortCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 
@@ -16,6 +17,7 @@ public class ShortUrl {
     private final Instant createdAt;
     @Getter
     private Instant expiresAt;
+    @Setter
     private Long clickCount;
 
     public ShortUrl(Long id, ShortCode shortCode, LongUrl longUrl,

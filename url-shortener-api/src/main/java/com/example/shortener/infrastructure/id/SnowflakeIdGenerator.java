@@ -1,9 +1,11 @@
 package com.example.shortener.infrastructure.id;
 
 import com.example.shortener.application.port.out.IdGenerator;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+@Component
 public class SnowflakeIdGenerator implements IdGenerator {
     // === Конфигурация Snowflake ===
 
